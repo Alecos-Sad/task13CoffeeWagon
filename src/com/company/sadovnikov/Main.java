@@ -1,6 +1,6 @@
 package com.company.sadovnikov;
 
-import com.company.sadovnikov.model.Arabic;
+import com.company.sadovnikov.model.sorts.Arabic;
 
 public class Main {
 
@@ -9,5 +9,6 @@ public class Main {
 
         Arabic arabic = new Arabic();
         System.out.println(arabic.getCoffeeType());
+        System.out.println(arabic.getPrice());
     }
 }

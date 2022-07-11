@@ -34,19 +34,19 @@ public class Van {
         return number;
     }
 
-    public void showCargoList() {
-        List<CoffeeType> coffeeTypeList = getRange();
-        System.out.println("Item : Price : Value");
-        for (CoffeeType type : coffeeTypeList) {
-            System.out.println(type + " : " + type.getPrice() + " : " + type.getVolume());
-        }
-    }
+//    public void showCargoList() {
+//        List<CoffeeType> coffeeTypeList = getRange();
+//        System.out.println("Item : Price : Value");
+//        for (CoffeeType type : coffeeTypeList) {
+//            System.out.println(type + " : " + type.getPrice() + " : " + type.getVolume());
+//        }
+//    }
 
-    public void sort() {
-        System.out.println("Sorted by price-to-volume ratio");
-        getRange().stream()
-                .sorted(Comparator.comparing(CoffeeType::getPrice))
-                .sorted(Comparator.comparing(CoffeeType::getVolume))
-                .collect(Collectors.toList()).forEach(System.out::println);
-    }
+//    public void sort() {
+//        System.out.println("Sorted by price-to-volume ratio");
+//        getRange().stream()
+//                .sorted(Comparator.comparing(CoffeeType::getPrice))
+//                .sorted(Comparator.comparing(CoffeeType::getVolume))
+//                .collect(Collectors.toList()).forEach(System.out::println);
+//    }
 }

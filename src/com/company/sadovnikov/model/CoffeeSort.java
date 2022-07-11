@@ -6,17 +6,26 @@ public abstract class CoffeeSort {
     String name;
     double price;
     CoffeeType coffeeType;
+    double weight;
+
 
     public CoffeeSort(String name, double price) {
         this.name = name;
         this.price = price;
-        this.coffeeType = getRandomCoffee();
+        this.coffeeType = getRandomCoffeeType();
+        this.weight = coffeeType.getVolume();
+
+
     }
 
-    private CoffeeType getRandomCoffee() {
+    private CoffeeType getRandomCoffeeType() {
         int randomNumber = (int) (Math.random() * 4);
         CoffeeType[] items = CoffeeType.values();
         return items[randomNumber];
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getName() {
@@ -31,11 +40,12 @@ public abstract class CoffeeSort {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public CoffeeType getCoffeeType() {
         return coffeeType;
+    }
+
+    public double getWeight() {
+        return weight;
     }
 }

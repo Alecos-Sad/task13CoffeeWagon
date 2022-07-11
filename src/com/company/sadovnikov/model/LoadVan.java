@@ -1,13 +1,17 @@
 package com.company.sadovnikov.model;
 
+import com.company.sadovnikov.model.sorts.Arabic;
+import com.company.sadovnikov.model.sorts.Liberic;
+import com.company.sadovnikov.model.sorts.Robust;
 import com.company.sadovnikov.type.CoffeeType;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoadVan {
     private double loadSum;
     private double loadVolume;
-    List<CoffeeType> cargoList;
+    List<CoffeeSort> cargoList;
 
 
     public LoadVan(double loadSum, Van van) {
@@ -15,32 +19,44 @@ public class LoadVan {
         this.loadVolume = van.getCapacity();
     }
 
-    public List<CoffeeType> getCargoList() {
+    public List<CoffeeSort> getCargoList() {
         cargoList = new ArrayList<>();
         while (loadSum > 0 && !isCash() && loadVolume > 0 && !isWeight()) {
-            CoffeeType item = getRandomCoffee();
-            if (loadSum - item.getPrice() > 0 && loadVolume - item.getVolume() > 0) {
+            CoffeeSort item = getRandomCoffee();
+            if (loadSum - item.getPrice() > 0 && loadVolume - item.getWeight() > 0) {
                 loadSum = loadSum - item.getPrice();
-                loadVolume = loadVolume - item.getVolume();
+                loadVolume = loadVolume - item.getWeight();
                 cargoList.add(item);
             }
         }
-       return cargoList;
+        return cargoList;
     }
 
-    public void balance(){
+    public void balance() {
         System.out.println("Balance of unused money: " + loadSum);
         System.out.println("Unused volume balance: " + loadVolume);
     }
 
-    private CoffeeType getRandomCoffee() {
-        int randomNumber = (int) (Math.random() * 4);
-        CoffeeType[] items = CoffeeType.values();
-        return items[randomNumber];
+    private CoffeeSort getRandomCoffee() {
+        int randomNumber = (int) (Math.random() * 3);
+        if (randomNumber == 0) {
+            return new Arabic();
+        } else if (randomNumber == 1) {
+            return new Robust();
+        }
+        return new Liberic();
+    }
+
+    public double getMinPrice(){
+        return 0;
     }
 
     public boolean isCash() {
-        return loadSum < CoffeeType.getMinPrice();
+
+
+
+        //return loadSum < CoffeeType.getMinPrice();
+        return true;
     }
 
     public boolean isWeight() {

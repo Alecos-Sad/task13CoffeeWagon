@@ -5,46 +5,42 @@ package com.company.sadovnikov.type;
  */
 public enum CoffeeType {
 
-    BEANS(50.0, 1200.5),
-    GROUND(60.0, 4500.5),
-    INSTANT_CANS(70, 2100.0),
-    INSTANT_BAG(95, 5700.0);
+    BEANS(50.0),
+    GROUND(60.0),
+    INSTANT_CANS(70),
+    INSTANT_BAG(95);
 
     double volume;
-    double price;
 
-    CoffeeType(double volume, double price) {
+    CoffeeType(double volume) {
         this.volume = volume;
-        this.price = price;
+
     }
 
     public double getVolume() {
         return volume;
     }
 
-    public double getPrice() {
-        return price;
-    }
 
-    public static double getMaxPrice() {
-        CoffeeType[] items = CoffeeType.values();
-        double price = 0;
-        for (CoffeeType item : items) {
-            price = Math.max(price, item.getPrice());
-        }
-        return price;
-    }
-
-    public static double getMinPrice() {
-        CoffeeType[] items = CoffeeType.values();
-        double price = items[0].getPrice();
-        for (CoffeeType item : items) {
-            if (item.getPrice() < price) {
-                price = item.getPrice();
-            }
-        }
-        return price;
-    }
+//    public static double getMaxPrice() {
+//        CoffeeType[] items = CoffeeType.values();
+//        double price = 0;
+//        for (CoffeeType item : items) {
+//            price = Math.max(price, item.getPrice());
+//        }
+//        return price;
+//    }
+//
+//    public static double getMinPrice() {
+//        CoffeeType[] items = CoffeeType.values();
+//        double price = items[0].getPrice();
+//        for (CoffeeType item : items) {
+//            if (item.getPrice() < price) {
+//                price = item.getPrice();
+//            }
+//        }
+//        return price;
+//    }
 
     public static double getMinVolume() {
         CoffeeType[] items = CoffeeType.values();
